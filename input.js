@@ -26,6 +26,15 @@ const handleUserInput = function() {
     case 'd':
       connection.write('Move: right');
       break;
+    case 't':
+      connection.write('Say: I am talking');
+      break;
+    case 'n':
+      connection.write('Say: Nice work');
+      break;
+    case 'g':
+      connection.write('Say: GG');
+      break;
     case '\u0003':
       process.exit();
     }
