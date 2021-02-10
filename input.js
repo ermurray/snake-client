@@ -11,8 +11,22 @@ const setupInput = function() {
 
 const handleUserInput = function() {
   stdin.on('data', (key) => {
-    if(key === '\u0003') {
+    if (key === '\u0003') {
       process.exit();
+    }
+    switch (key) {
+    case 'w':
+      console.log('w');
+      break;
+    case 'a':
+      console.log('a');
+      break;
+    case 's':
+      console.log('s');
+      break;
+    case 'd':
+      console.log('d');
+      break;
     }
   });
 };
