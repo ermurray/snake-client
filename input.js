@@ -1,6 +1,8 @@
 const { stdin } = require('process');
+let connection;
 
-const setupInput = function() {
+const setupInput = function(conn) {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
@@ -11,21 +13,18 @@ const setupInput = function() {
 
 const handleUserInput = function() {
   stdin.on('data', (key) => {
-    // if (key === '\u0003') {
-    //   process.exit();
-    // }
     switch (key) {
     case 'w':
-      console.log('w');
+      connection.write('Move: up');
       break;
     case 'a':
-      console.log('a');
+      connection.write('Move: left');
       break;
     case 's':
-      console.log('s');
+      connection.write('Move: down');
       break;
     case 'd':
-      console.log('d');
+      connection.write('Move: right');
       break;
     case '\u0003':
       process.exit();
@@ -34,3 +33,9 @@ const handleUserInput = function() {
 };
 
 module.exports = { setupInput };
+
+//movement
+// "Move: up" - move up one square (unless facing down)
+// "Move: down" - move down one square (unless facing up)
+// "Move: left" - move left one square (unless facing right)
+// "Move: right" - move left one square (unless facing left)
